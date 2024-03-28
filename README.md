@@ -14,3 +14,6 @@ Yellow belt stepik C++ course's solutions
     - Point 1.5: Function templates
         - Step 10: ["Square everything"](SquareEverything/main.cpp)
         - Step 11: ["Element reference"](ElementReference/main.cpp)
+- Week 2: Testing and debugging
+    - Point 2.1: Using unit-tests for program debugging
+        - Step 8: ["Program decomposition"](ProgramDecomposition/main.cpp)
