@@ -21,3 +21,4 @@ Yellow belt stepik C++ course's solutions
         - Step 2: ["`GetDistinctRealRootCount()` function tests"](GetDistinctRealRootCountFunctionTests/main.cpp)
         - Step 3: ["`Person` tests"](PersonTests/main.cpp)
         - Step 4: ["`Rational` tests"](RationalTests/main.cpp)
+        - Step 5: ["`IsPalindrom()` tests"](IsPalindromTests/main.cpp)
