@@ -17,3 +17,5 @@ Yellow belt stepik C++ course's solutions
 - Week 2: Testing and debugging
     - Point 2.1: Using unit-tests for program debugging
         - Step 8: ["Program decomposition"](ProgramDecomposition/main.cpp)
+    - Point 2.4: Unit-test framework developing, end. Part 2
+        - Step 2: ["`GetDistinctRealRootCount()` function tests"](GetDistinctRealRootCountFunctionTests/main.cpp)
