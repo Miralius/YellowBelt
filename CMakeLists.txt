@@ -4,8 +4,5 @@ project(YellowBelt)
 set(CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
-add_executable(YellowBelt
-        TestRunner.cpp
-        TestRunner.h
-        main.cpp
-)
+add_subdirectory(TestRunner)
+add_subdirectory(MatrixSummation)
