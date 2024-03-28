@@ -10,3 +10,4 @@ Yellow belt stepik C++ course's solutions
         - Step 9: ["Block weight"](BlockWeight/main.cpp)
     - Point 1.4: Tuples
         - Step 4: ["Region base"](RegionBase/FindMaxRepetitionCount.h)
+        - Step 5: ["Task tracker"](TaskTracker/main.cpp)
