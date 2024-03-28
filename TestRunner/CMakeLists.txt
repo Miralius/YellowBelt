@@ -1,0 +1,2 @@
+add_library(TestRunner TestRunner.h)
+set_target_properties(TestRunner PROPERTIES LINKER_LANGUAGE CXX)

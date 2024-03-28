@@ -1,0 +1,1 @@
+add_executable(SumReverseSort sum_reverse_sort.h sum_reverse_sort.cpp main.cpp)
