@@ -13,3 +13,4 @@ Yellow belt stepik C++ course's solutions
         - Step 5: ["Task tracker"](TaskTracker/main.cpp)
     - Point 1.5: Function templates
         - Step 10: ["Square everything"](SquareEverything/main.cpp)
+        - Step 11: ["Element reference"](ElementReference/main.cpp)
