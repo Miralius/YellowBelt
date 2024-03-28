@@ -1,0 +1,1 @@
+add_executable(RationalTests Rational.h main.cpp)

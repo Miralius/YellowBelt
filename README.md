@@ -20,3 +20,4 @@ Yellow belt stepik C++ course's solutions
     - Point 2.4: Unit-test framework developing, end. Part 2
         - Step 2: ["`GetDistinctRealRootCount()` function tests"](GetDistinctRealRootCountFunctionTests/main.cpp)
         - Step 3: ["`Person` tests"](PersonTests/main.cpp)
+        - Step 4: ["`Rational` tests"](RationalTests/main.cpp)
