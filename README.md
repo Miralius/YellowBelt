@@ -7,3 +7,4 @@ Yellow belt stepik C++ course's solutions
         - Step 1: ["Matrix summation"](MatrixSummation/main.cpp)
     - Point 1.3: Integers
         - Step 8: ["Average temperature 2"](AverageTemperature2/main.cpp)
+        - Step 9: ["Block weight"](BlockWeight/main.cpp)
