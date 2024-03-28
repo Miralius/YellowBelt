@@ -62,7 +62,7 @@ void AssertEqual(const T &t, const U &u, const string &hint = {}) {
     }
 }
 
-[[maybe_unused]] [[maybe_unused]] void Assert(bool b, const string &hint) {
+[[maybe_unused]] void Assert(bool b, const string &hint) {
     AssertEqual(b, true, hint);
 }
 
