@@ -1,1 +1,0 @@
-add_library(TestRunner TestRunner.cpp TestRunner.h)
