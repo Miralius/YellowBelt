@@ -28,3 +28,4 @@ Yellow belt stepik C++ course's solutions
     - Point 3.3: Multi-file projects. Part 2
         - Step 1: ["Implement the class declared in the header file"](PhoneNumber/phone_number.cpp)
         - Step 2: ["Write a class declaration"](Rectangle/rectangle.h)
+        - Step 3: ["Program decomposition 2"](BusManager)
