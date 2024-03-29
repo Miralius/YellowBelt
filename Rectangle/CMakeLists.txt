@@ -1,0 +1,1 @@
+add_library(Rectangle rectangle.cpp rectangle.h)

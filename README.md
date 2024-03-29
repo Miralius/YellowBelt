@@ -27,3 +27,4 @@ Yellow belt stepik C++ course's solutions
         - Step 12: ["Implement the functions declared in the header file"](SumReverseSort/sum_reverse_sort.cpp)
     - Point 3.3: Multi-file projects. Part 2
         - Step 1: ["Implement the class declared in the header file"](PhoneNumber/phone_number.cpp)
+        - Step 2: ["Write a class declaration"](Rectangle/rectangle.h)
