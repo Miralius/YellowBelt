@@ -47,3 +47,4 @@ Yellow belt stepik C++ course's solutions
         - Step 7: ["The nearest element searching"](TheNearestElementSearching/main.cpp)
         - Step 8: ["First and last names 4"](FirstAndLastNames4/main.cpp)
         - Step 9: ["Grouping strings by prefix"](GroupingStringsByPrefix/main.cpp)
+        - Step 10: ["Grouping strings by prefix"](GroupingStringsByPrefix2/main.cpp)
