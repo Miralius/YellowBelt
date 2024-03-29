@@ -55,3 +55,4 @@ Yellow belt stepik C++ course's solutions
         - Step 12: ["Inheritance by own hands"](InheritanceByOwnHands/main.cpp)
     - Point 5.2: Polymorphism
         - Step 10: ["Notification sender"](NotificationSender/main.cpp)
+        - Step 11: ["Figure set"](FigureSet/main.cpp)
