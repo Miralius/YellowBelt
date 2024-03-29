@@ -40,3 +40,5 @@ Yellow belt stepik C++ course's solutions
         - Step 14: ["Demographic indicators"](DemographicIndicators/main.cpp)
         - Step 15: ["Merge sort"](MergeSort/main.cpp)
         - Step 16: ["Merge sort 2"](MergeSort2/main.cpp)
+    - Point 4.3: Using iterators in algorithms and containers. Part 2
+        - Step 2: ["Personal budget, starter version"](PersonalBudgetStarterVersion/main.cpp)
