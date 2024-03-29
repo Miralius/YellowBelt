@@ -37,3 +37,4 @@ Yellow belt stepik C++ course's solutions
     - Point 4.2: Using iterators in algorithms and containers. Part 1
         - Step 12: ["Removing duplicates"](RemovingDuplicates/main.cpp)
         - Step 13: ["Iterating through permutations"](IteratingThroughPermutations/main.cpp)
+        - Step 14: ["Demographic indicators"](DemographicIndicators/main.cpp)
