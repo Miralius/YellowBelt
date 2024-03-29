@@ -43,3 +43,5 @@ Yellow belt stepik C++ course's solutions
     - Point 4.3: Using iterators in algorithms and containers. Part 2
         - Step 2: ["Personal budget, starter version"](PersonalBudgetStarterVersion/main.cpp)
         - Step 3: ["Personal budget, starter plus version"](PersonalBudgetStarterPlusVersion/main.cpp)
+    - Point 4.4: Queue, deque, and search algorithms
+        - Step 7: ["The nearest element searching"](TheNearestElementSearching/main.cpp)
