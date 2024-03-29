@@ -45,3 +45,4 @@ Yellow belt stepik C++ course's solutions
         - Step 3: ["Personal budget, starter plus version"](PersonalBudgetStarterPlusVersion/main.cpp)
     - Point 4.4: Queue, deque, and search algorithms
         - Step 7: ["The nearest element searching"](TheNearestElementSearching/main.cpp)
+        - Step 8: ["First and last names 4"](FirstAndLastNames4/main.cpp)
