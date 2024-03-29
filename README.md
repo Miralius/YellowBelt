@@ -36,3 +36,4 @@ Yellow belt stepik C++ course's solutions
         - Step 7: ["Split into words"](SplittingIntoWords/main.cpp)
     - Point 4.2: Using iterators in algorithms and containers. Part 1
         - Step 12: ["Removing duplicates"](RemovingDuplicates/main.cpp)
+        - Step 13: ["Iterating through permutations"](IteratingThroughPermutations/main.cpp)
