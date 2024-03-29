@@ -33,3 +33,4 @@ Yellow belt stepik C++ course's solutions
     - Point 4.1: Iterators
         - Step 5: ["Vector part"](VectorPart/main.cpp)
         - Step 6: ["Set part"](SetPart/main.cpp)
+        - Step 7: ["Split into words"](SplittingIntoWords/main.cpp)
