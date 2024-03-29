@@ -23,5 +23,7 @@ Yellow belt stepik C++ course's solutions
         - Step 4: ["`Rational` tests"](RationalTests/main.cpp)
         - Step 5: ["`IsPalindrom()` tests"](IsPalindromTests/main.cpp)
 - Week 3: Code distribution in files
-    - Point 3.2: Multi files projects. Part 1
+    - Point 3.2: Multi-file projects. Part 1
         - Step 12: ["Implement the functions declared in the header file"](SumReverseSort/sum_reverse_sort.cpp)
+    - Point 3.3: Multi-file projects. Part 2
+        - Step 1: ["Implement the class declared in the header file"](PhoneNumber/phone_number.cpp)

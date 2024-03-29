@@ -9,7 +9,7 @@ int main()
         AssertEqual(Reverse("glavryba"), "abyrvalg", R"(Reverse("glavryba") != "abyrvalg")");
         vector<int> example = {1, 8, 4, 8};
         Sort(example);
-        AssertEqual(example, vector<int>({1, 4, 8 ,9}), "example != {1, 4, 8 ,8}");
+        AssertEqual(example, vector<int>({1, 4, 8 ,8}), "example != {1, 4, 8 ,8}");
     }, "SumReverseSort tests");
 
     return 0;
