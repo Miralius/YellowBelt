@@ -46,3 +46,4 @@ Yellow belt stepik C++ course's solutions
     - Point 4.4: Queue, deque, and search algorithms
         - Step 7: ["The nearest element searching"](TheNearestElementSearching/main.cpp)
         - Step 8: ["First and last names 4"](FirstAndLastNames4/main.cpp)
+        - Step 9: ["Grouping strings by prefix"](GroupingStringsByPrefix/main.cpp)
