@@ -50,3 +50,6 @@ Yellow belt stepik C++ course's solutions
         - Step 10: ["Grouping strings by prefix"](GroupingStringsByPrefix2/main.cpp)
         - Step 11: ["Arithmetic expression construction"](ArithmeticExpressionConstruction/main.cpp)
         - Step 12: ["Arithmetic expression construction 2"](ArithmeticExpressionConstruction2/main.cpp)
+- Week 5: Inheritance and polymorphism
+    - Point 5.1: Inheritance
+        - Step 12: ["Inheritance by own hands"](InheritanceByOwnHands/main.cpp)
