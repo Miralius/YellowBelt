@@ -49,3 +49,4 @@ Yellow belt stepik C++ course's solutions
         - Step 9: ["Grouping strings by prefix"](GroupingStringsByPrefix/main.cpp)
         - Step 10: ["Grouping strings by prefix"](GroupingStringsByPrefix2/main.cpp)
         - Step 11: ["Arithmetic expression construction"](ArithmeticExpressionConstruction/main.cpp)
+        - Step 12: ["Arithmetic expression construction 2"](ArithmeticExpressionConstruction2/main.cpp)
