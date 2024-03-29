@@ -1,0 +1,1 @@
+add_executable(VectorPart main.cpp)

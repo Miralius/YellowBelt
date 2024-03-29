@@ -29,3 +29,6 @@ Yellow belt stepik C++ course's solutions
         - Step 1: ["Implement the class declared in the header file"](PhoneNumber/phone_number.cpp)
         - Step 2: ["Write a class declaration"](Rectangle/rectangle.h)
         - Step 3: ["Program decomposition 2"](BusManager)
+- Week 4: Iterators, algorithms, and containers
+    - Point 4.1: Iterators
+        - Step 5: ["Vector part"](VectorPart/main.cpp)
