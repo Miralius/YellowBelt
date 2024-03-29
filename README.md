@@ -32,3 +32,4 @@ Yellow belt stepik C++ course's solutions
 - Week 4: Iterators, algorithms, and containers
     - Point 4.1: Iterators
         - Step 5: ["Vector part"](VectorPart/main.cpp)
+        - Step 6: ["Set part"](SetPart/main.cpp)
