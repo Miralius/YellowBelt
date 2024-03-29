@@ -1,0 +1,1 @@
+add_executable(MergeSort2 main.cpp)

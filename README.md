@@ -39,3 +39,4 @@ Yellow belt stepik C++ course's solutions
         - Step 13: ["Iterating through permutations"](IteratingThroughPermutations/main.cpp)
         - Step 14: ["Demographic indicators"](DemographicIndicators/main.cpp)
         - Step 15: ["Merge sort"](MergeSort/main.cpp)
+        - Step 16: ["Merge sort 2"](MergeSort2/main.cpp)
