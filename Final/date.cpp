@@ -3,3 +3,10 @@
 //
 
 #include "date.h"
+
+TimePoint ParseDate(istream& is)
+{
+    // mock function;
+    (void)is;
+    return {};
+}
