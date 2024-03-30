@@ -56,3 +56,4 @@ Yellow belt stepik C++ course's solutions
     - Point 5.2: Polymorphism
         - Step 10: ["Notification sender"](NotificationSender/main.cpp)
         - Step 11: ["Figure set"](FigureSet/main.cpp)
+        - Step 13: ["Refactoring"](Refactoring/main.cpp)
