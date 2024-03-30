@@ -6,7 +6,7 @@
 #define YELLOWBELT_NODE_H
 
 
-class node {
+class Node {
 
 };
 
