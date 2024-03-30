@@ -57,3 +57,6 @@ Yellow belt stepik C++ course's solutions
         - Step 10: ["Notification sender"](NotificationSender/main.cpp)
         - Step 11: ["Figure set"](FigureSet/main.cpp)
         - Step 13: ["Refactoring"](Refactoring/main.cpp)
+- Week 6: Course project
+    - Point 6.1: Course project
+        - Step 3: ["Final"](Final)
