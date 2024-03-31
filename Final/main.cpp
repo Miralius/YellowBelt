@@ -15,7 +15,10 @@
 using namespace std;
 
 string ParseEvent(istream& is) {
-  // Реализуйте эту функцию
+    // Реализуйте эту функцию
+    // mock function
+    (void)is;
+    return {};
 }
 
 void TestAll();
