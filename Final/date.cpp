@@ -8,14 +8,18 @@ Date::Date()
         : _date(TimePoint()) {}
 
 // TODO: Might be it's needed to remove attribute
-[[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t date)
-        : _date([](const uint16_t year, const uint16_t month, const uint16_t date) {
-    // TODO: implement lambda function
-    (void) year;
-    (void) month;
-    (void) date;
-    return TimePoint();
-}(year, month, date)) {}
+[[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
+        : _date([](const uint16_t year, const uint16_t month, const uint16_t day) {
+    tm time = {};
+    FillTmStruct(time, year, month, day);
+    return chrono::time_point_cast<Days>(chrono::system_clock::from_time_t(mktime(&time)));
+}(year, month, day)) {}
+
+void FillTmStruct(tm &time, uint16_t year, uint16_t month, uint16_t day) {
+    time.tm_year = year - 1900;
+    time.tm_mon = month;
+    time.tm_mday = day;
+}
 
 Date ParseDate(istream &is) {
     // TODO: implement function;
@@ -23,11 +27,10 @@ Date ParseDate(istream &is) {
     return {};
 }
 
-ostream& operator<<(ostream &os, const Date& date)
-{
+ostream &operator<<(ostream &os, const Date &date) {
     // TODO: implement function;
     // date out for 0-1-1 should be 0001-01-1
-    (void)os;
-    (void)date;
+    (void) os;
+    (void) date;
     return os;
 }
