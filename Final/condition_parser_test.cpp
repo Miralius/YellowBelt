@@ -83,5 +83,4 @@ void TestParseCondition() {
         Assert(!root->Evaluate({2016, 1, 1}, "event"), "Parse condition 29");
         Assert(root->Evaluate({2016, 1, 2}, "event"), "Parse condition 30");
     }
-    // TODO: add test for all boundary conditions
 }

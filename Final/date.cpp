@@ -22,3 +22,11 @@ Date ParseDate(istream &is) {
     (void) is;
     return {};
 }
+
+ostream& operator<<(ostream &os, const Date& date)
+{
+    // TODO: implement function;
+    (void)os;
+    (void)date;
+    return os;
+}

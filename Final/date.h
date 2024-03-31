@@ -26,4 +26,6 @@ private:
 
 Date ParseDate(istream &is);
 
+ostream& operator<<(ostream &os, const Date& date);
+
 #endif //YELLOW_BELT_DATE_H
