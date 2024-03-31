@@ -43,4 +43,5 @@ ostream &operator<<(ostream &os, const Date &date) {
     const time_t time_t = chrono::system_clock::to_time_t(date.GetTimePoint());
     const tm tm = *localtime(&time_t);
     os << setfill('0') << setw(4) << tm.tm_year << '-' << setw(2) << tm.tm_mon << '-' << tm.tm_mday;
+    return os;
 }
