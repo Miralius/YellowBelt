@@ -10,14 +10,6 @@ add_executable(Final main.cpp
         node.h
         token.cpp
         token.h
-        empty_node.h
-        logical_operation_node.cpp
-        logical_operation_node.h
         logical_operation.h
-        event_comparison_node.cpp
-        event_comparison_node.h
-        date_comparison_node.cpp
-        date_comparison_node.h
         comparison.h
-        comparison_node.cpp
-        comparison_node.h)
+)

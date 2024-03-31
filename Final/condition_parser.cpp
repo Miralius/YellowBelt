@@ -1,9 +1,5 @@
 #include "condition_parser.h"
 #include "token.h"
-#include "empty_node.h"
-#include "logical_operation_node.h"
-#include "event_comparison_node.h"
-#include "date_comparison_node.h"
 #include "comparison.h"
 
 #include <map>
