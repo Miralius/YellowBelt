@@ -3,3 +3,11 @@
 //
 
 #include "node.h"
+
+bool Node::Evaluate(const Date& date, const string& event)
+{
+    // mock function
+    (void)date;
+    (void)event;
+    return {};
+}
