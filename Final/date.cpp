@@ -9,8 +9,7 @@
 Date::Date()
         : _date(TimePoint()) {}
 
-// TODO: Might be it's needed to remove attribute
-[[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
+Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
         : _date([](const uint16_t year, const uint16_t month, const uint16_t day) {
     tm time = {};
     FillTmStruct(time, year, month, day);

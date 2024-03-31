@@ -18,8 +18,7 @@ class Date {
 public:
     Date();
 
-    // TODO: Might be it's needed to remove attribute
-    [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t day);
+    Date(uint16_t year, uint16_t month, uint16_t day);
 
     [[nodiscard]] TimePoint GetTimePoint() const;
 private:
