@@ -13,8 +13,12 @@ using TimePoint = chrono::time_point<chrono::system_clock>;
 
 class Date {
 public:
+    Date();
+    Date(uint16_t year, uint16_t month, uint16_t date);
+private:
+    const TimePoint _date;
 };
 
-TimePoint ParseDate(istream& is);
+Date ParseDate(istream& is);
 
 #endif //YELLOWBELT_DATE_H
