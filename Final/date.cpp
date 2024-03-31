@@ -26,6 +26,7 @@ Date ParseDate(istream &is) {
 ostream& operator<<(ostream &os, const Date& date)
 {
     // TODO: implement function;
+    // date out for 0-1-1 should be 0001-01-1
     (void)os;
     (void)date;
     return os;
