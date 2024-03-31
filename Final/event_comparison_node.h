@@ -13,7 +13,8 @@ using namespace std;
 
 class EventComparisonNode : public ComparisonNode {
 public:
-    EventComparisonNode(const Comparison& comparison, const string& event);
+    EventComparisonNode(const Comparison& comparison, string  event);
+    // TODO: May be it's needed to override Evaluate method
 private:
     const string _event;
 };

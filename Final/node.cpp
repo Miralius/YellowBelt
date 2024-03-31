@@ -4,10 +4,10 @@
 
 #include "node.h"
 
-bool Node::Evaluate(const Date& date, const string& event)
-{
-    // mock function
-    (void)date;
-    (void)event;
+// TODO: Check static functions suppressing
+bool Node::Evaluate(const Date &date, const string &event) { // NOLINT(*-convert-member-functions-to-static)
+    // TODO: implement function
+    (void) date;
+    (void) event;
     return {};
 }

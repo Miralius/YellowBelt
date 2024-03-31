@@ -6,5 +6,4 @@
 
 ComparisonNode::ComparisonNode(const Comparison &comparison)
         : _comparison(comparison) {
-
 }

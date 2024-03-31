@@ -4,7 +4,8 @@
 
 #include "event_comparison_node.h"
 
-EventComparisonNode::EventComparisonNode(const Comparison &comparison, const string &event)
-        : ComparisonNode(comparison), _event(event) {
+#include <utility>
 
+EventComparisonNode::EventComparisonNode(const Comparison &comparison, string event)
+        : ComparisonNode(comparison), _event(std::move(event)) {
 }

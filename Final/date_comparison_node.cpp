@@ -4,7 +4,8 @@
 
 #include "date_comparison_node.h"
 
-DateComparisonNode::DateComparisonNode(const Comparison &comparison, const Date &date)
-        : ComparisonNode(comparison), _date(date) {
+#include <utility>
 
+DateComparisonNode::DateComparisonNode(const Comparison &comparison, Date date)
+        : ComparisonNode(comparison), _date(std::move(date)) {
 }

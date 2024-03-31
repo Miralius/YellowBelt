@@ -7,9 +7,10 @@
 Date::Date()
         : _date(TimePoint()) {}
 
-Date::Date(const uint16_t year, const uint16_t month, const uint16_t date)
+// TODO: Might be it's needed to remove attribute
+[[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t date)
         : _date([](const uint16_t year, const uint16_t month, const uint16_t date) {
-    // mock lambda function
+    // TODO: implement lambda function
     (void) year;
     (void) month;
     (void) date;
@@ -17,7 +18,7 @@ Date::Date(const uint16_t year, const uint16_t month, const uint16_t date)
 }(year, month, date)) {}
 
 Date ParseDate(istream &is) {
-    // mock function;
+    // TODO: implement function;
     (void) is;
     return {};
 }

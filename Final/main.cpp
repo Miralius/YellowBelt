@@ -1,10 +1,12 @@
 #include "database.h"
 #include "date.h"
 #include "condition_parser.h"
-#include "node.h"
+// TODO: maybe #include "node.h" is needed here
 // The #if is needed for stepik check system submitting if we use the whole file
 #if __GNUC__ == 13 && __GNUC_MINOR__ == 2
+
 #include "../TestRunner/TestRunner.h"
+
 #else
 #include "test_runner.h"
 #endif
@@ -14,85 +16,85 @@
 
 using namespace std;
 
-string ParseEvent(istream& is) {
-    // Реализуйте эту функцию
-    // mock function
-    (void)is;
+string ParseEvent(istream &is) {
+    // TODO: implement function
+    (void) is;
     return {};
 }
 
 void TestAll();
 
 int main() {
-  TestAll();
+    TestAll();
 
-  Database db;
+    Database db;
 
-  for (string line; getline(cin, line); ) {
-    istringstream is(line);
+    for (string line; getline(cin, line);) {
+        istringstream is(line);
 
-    string command;
-    is >> command;
-    if (command == "Add") {
-      const auto date = ParseDate(is);
-      const auto event = ParseEvent(is);
-      db.Add(date, event);
-    } else if (command == "Print") {
-      db.Print(cout);
-    } else if (command == "Del") {
-      auto condition = ParseCondition(is);
-      auto predicate = [condition](const Date& date, const string& event) {
-        return condition->Evaluate(date, event);
-      };
-      int count = db.RemoveIf(predicate);
-      cout << "Removed " << count << " entries" << endl;
-    } else if (command == "Find") {
-      auto condition = ParseCondition(is);
-      auto predicate = [condition](const Date& date, const string& event) {
-        return condition->Evaluate(date, event);
-      };
+        string command;
+        is >> command;
+        if (command == "Add") {
+            const auto date = ParseDate(is);
+            const auto event = ParseEvent(is);
+            db.Add(date, event);
+        } else if (command == "Print") {
+            db.Print(cout);
+        } else if (command == "Del") {
+            auto condition = ParseCondition(is);
+            auto predicate = [condition](const Date &date, const string &event) {
+                return condition->Evaluate(date, event);
+            };
+            int count = db.RemoveIf(predicate);
+            cout << "Removed " << count << " entries" << endl;
+        } else if (command == "Find") {
+            auto condition = ParseCondition(is);
+            auto predicate = [condition](const Date &date, const string &event) {
+                return condition->Evaluate(date, event);
+            };
 
-      const auto entries = db.FindIf(predicate);
-      for (const auto& entry : entries) {
-        cout << entry << endl;
-      }
-      cout << "Found " << entries.size() << " entries" << endl;
-    } else if (command == "Last") {
-      try {
-          cout << db.Last(ParseDate(is)) << endl;
-      } catch (invalid_argument&) {
-          cout << "No entries" << endl;
-      }
-    } else if (command.empty()) {
-      continue;
-    } else {
-      throw logic_error("Unknown command: " + command);
+            const auto entries = db.FindIf(predicate);
+            for (const auto &entry: entries) {
+                cout << entry << endl;
+            }
+            cout << "Found " << entries.size() << " entries" << endl;
+        } else if (command == "Last") {
+            try {
+                cout << db.Last(ParseDate(is)) << endl;
+            } catch (invalid_argument &) {
+                cout << "No entries" << endl;
+            }
+        } else if (command.empty()) {
+            continue;
+        } else {
+            throw logic_error("Unknown command: " + command);
+        }
     }
-  }
 
-  return 0;
+    return 0;
 }
 
 void TestParseEvent() {
-  {
-    istringstream is("event");
-    AssertEqual(ParseEvent(is), "event", "Parse event without leading spaces");
-  }
-  {
-    istringstream is("   sport event ");
-    AssertEqual(ParseEvent(is), "sport event ", "Parse event with leading spaces");
-  }
-  {
-    istringstream is("  first event  \n  second event");
-    vector<string> events;
-    events.push_back(ParseEvent(is));
-    events.push_back(ParseEvent(is));
-    AssertEqual(events, vector<string>{"first event  ", "second event"}, "Parse multiple events");
-  }
+    {
+        istringstream is("event");
+        AssertEqual(ParseEvent(is), "event", "Parse event without leading spaces");
+    }
+    {
+        istringstream is("   sport event ");
+        AssertEqual(ParseEvent(is), "sport event ", "Parse event with leading spaces");
+    }
+    {
+        istringstream is("  first event  \n  second event");
+        vector<string> events;
+        events.push_back(ParseEvent(is));
+        events.push_back(ParseEvent(is));
+        AssertEqual(events, vector<string>{"first event  ", "second event"}, "Parse multiple events");
+    }
 }
 
 void TestAll() {
-  TestRunner tr;
-  tr.RunTest(TestParseEvent, "TestParseEvent");
-  tr.RunTest(TestParseCondition, "TestParseCondition");
+    TestRunner tr;
+    tr.RunTest(TestParseEvent, "TestParseEvent");
+    tr.RunTest(TestParseCondition, "TestParseCondition");
+    // TODO: implement TestParseDate()
 }

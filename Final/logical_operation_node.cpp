@@ -4,8 +4,9 @@
 
 #include "logical_operation_node.h"
 
-LogicalOperationNode::LogicalOperationNode(const LogicalOperation &logicalOperation, const NodePtr &left,
-                                           const NodePtr &right)
-        : _logicalOperation(logicalOperation), _left(left), _right(right) {
+#include <utility>
 
+LogicalOperationNode::LogicalOperationNode(const LogicalOperation &logicalOperation, NodePtr left,
+                                           NodePtr right)
+        : _logicalOperation(logicalOperation), _left(std::move(left)), _right(std::move(right)) {
 }

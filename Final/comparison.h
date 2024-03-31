@@ -5,7 +5,6 @@
 #ifndef YELLOW_BELT_COMPARISON_H
 #define YELLOW_BELT_COMPARISON_H
 
-
 enum class Comparison {
     Less,
     LessOrEqual,
@@ -14,6 +13,5 @@ enum class Comparison {
     Equal,
     NotEqual
 };
-
 
 #endif //YELLOW_BELT_COMPARISON_H

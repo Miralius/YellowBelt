@@ -10,8 +10,7 @@
 #include "node.h"
 
 class EmptyNode : public Node {
-
+    // TODO: May be it's needed to override Evaluate method
 };
-
 
 #endif //YELLOW_BELT_EMPTY_NODE_H

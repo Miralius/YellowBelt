@@ -10,7 +10,6 @@ add_executable(Final main.cpp
         node.h
         token.cpp
         token.h
-        empty_node.cpp
         empty_node.h
         logical_operation_node.cpp
         logical_operation_node.h

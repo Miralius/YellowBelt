@@ -8,13 +8,14 @@
 #pragma once
 
 #include "date.h"
+
 #include <memory>
 
 using namespace std;
 
 class Node {
 public:
-    bool Evaluate(const Date& date, const string& event);
+    bool Evaluate(const Date &date, const string &event);
 };
 
 using NodePtr = shared_ptr<Node>;

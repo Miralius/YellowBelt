@@ -1,5 +1,10 @@
 #include "condition_parser.h"
 #include "token.h"
+#include "empty_node.h"
+#include "logical_operation_node.h"
+#include "event_comparison_node.h"
+#include "date_comparison_node.h"
+#include "comparison.h"
 
 #include <map>
 using namespace std;
@@ -58,9 +63,9 @@ template <class It> shared_ptr<Node> ParseComparison(It& current, It end) {
 }
 
 template <class It>
-shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) {
+shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) { // NOLINT(*-no-recursion)
   if (current == end) {
-    return shared_ptr<Node>();
+    return {};
   }
 
   shared_ptr<Node> left;
