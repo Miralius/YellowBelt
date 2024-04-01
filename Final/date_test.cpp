@@ -16,6 +16,6 @@
 void TestParseDate() {
     {
         istringstream is("0-1-1");
-        AssertEqual(ParseDate(is), Date(0, 1, 2), "Parse date 0-1-1");
+        AssertEqual(ParseDate(is), Date(0, 1, 1), "Parse date 0-1-1");
     }
 }

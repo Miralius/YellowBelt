@@ -30,7 +30,6 @@ private:
 Date ParseDate(istream &is);
 
 void TestParseDate();
-// TODO: Check 0-1-1
 // TODO: Check 9999-12-31
 // TODO: Check 2017-11-07, 0-2-31
 
