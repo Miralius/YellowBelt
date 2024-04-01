@@ -14,13 +14,6 @@ ComparisonNode::ComparisonNode(const Comparison &comparison)
         : _comparison(comparison) {
 }
 
-bool ComparisonNode::Evaluate(const Date &date, const string &event) {
-    // TODO: implement function;
-    (void) date;
-    (void) event;
-    return false;
-}
-
 ComparisonNode::~ComparisonNode() = default;
 
 DateComparisonNode::DateComparisonNode(const Comparison &comparison, const Date &date)

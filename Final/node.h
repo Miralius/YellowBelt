@@ -35,9 +35,25 @@ public:
 
     virtual ~ComparisonNode();
 
-    bool Evaluate(const Date &date, const string &event) override;
-
 protected:
+    template<class Value>
+    bool compare(const Value &lhs, const Value &rhs) {
+        switch (_comparison) {
+            case Comparison::Less:
+                return lhs < rhs;
+            case Comparison::LessOrEqual:
+                return lhs <= rhs;
+            case Comparison::Greater:
+                return lhs > rhs;
+            case Comparison::GreaterOrEqual:
+                return lhs >= rhs;
+            case Comparison::Equal:
+                return lhs == rhs;
+            case Comparison::NotEqual:
+                return lhs != rhs;
+        }
+    }
+
     [[maybe_unused]] const Comparison _comparison; // TODO: May be [[maybe_unused] attribute isn't needed here
 };
 
