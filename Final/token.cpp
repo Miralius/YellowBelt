@@ -13,10 +13,10 @@ vector<Token> Tokenize(istream &cl) {
             string date(1, c);
             for (int i = 0; i < 3; ++i) {
                 while (isdigit(cl.peek())) {
-                    date += to_string(cl.get());
+                    date += static_cast<char>(cl.get());
                 }
                 if (i < 2) {
-                    date += to_string(cl.get()); // Consume '-'
+                    date += static_cast<char>(cl.get()); // Consume '-'
                 }
             }
             tokens.push_back({date, TokenType::DATE});
