@@ -17,9 +17,14 @@
 using namespace std;
 
 string ParseEvent(istream &is) {
-    // TODO: implement function
-    (void) is;
-    return {};
+    string event;
+    // ignore all spaces at the beginning of the event
+    while (is.peek() == ' ')
+    {
+        is.ignore();
+    }
+    getline(is, event);
+    return event;
 }
 
 void TestAll();
