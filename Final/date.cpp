@@ -4,9 +4,23 @@
 
 #include "date.h"
 
+#include <iomanip>
+
 // TODO: Might be it's needed to remove attribute
 [[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
         : _year(year), _month(month), _day(day) {}
+
+uint16_t Date::GetYear() const {
+    return _year;
+}
+
+uint16_t Date::GetMonth() const {
+    return _month;
+}
+
+uint16_t Date::GetDay() const {
+    return _day;
+}
 
 Date ParseDate(istream &is) {
     uint16_t year;
@@ -24,9 +38,6 @@ Date ParseDate(istream &is) {
 }
 
 ostream &operator<<(ostream &os, const Date &date) {
-    // TODO: implement function;
-    // date out for 0-1-1 should be 0001-01-1
-    (void) os;
-    (void) date;
-    return os;
+    return os << setfill('0') << setw(4) << date.GetYear() << '-' << setw(2) << date.GetMonth() << '-' << setw(2)
+              << date.GetDay();
 }

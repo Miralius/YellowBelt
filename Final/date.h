@@ -17,6 +17,12 @@ public:
     // TODO: Might be it's needed to remove attribute
     [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t day);
 
+    [[nodiscard]] uint16_t GetYear() const;
+
+    [[nodiscard]] uint16_t GetMonth() const;
+
+    [[nodiscard]] uint16_t GetDay() const;
+
 private:
     const uint16_t _year;
     const uint16_t _month;
