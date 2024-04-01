@@ -56,7 +56,7 @@ protected:
         }
     }
 
-    [[maybe_unused]] const Comparison _comparison; // TODO: May be [[maybe_unused] attribute isn't needed here
+    const Comparison _comparison;
 };
 
 class DateComparisonNode : public ComparisonNode {
@@ -92,7 +92,7 @@ public:
     bool Evaluate(const Date &date, const string &event) override;
 
 private:
-    [[maybe_unused]] const LogicalOperation _logicalOperation; // TODO: delete attribute if it's needed
+    const LogicalOperation _logicalOperation;
     const NodePtr _left;
     const NodePtr _right;
 };

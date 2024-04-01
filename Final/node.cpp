@@ -42,8 +42,7 @@ LogicalOperationNode::LogicalOperationNode(const LogicalOperation &logicalOperat
 }
 
 bool LogicalOperationNode::Evaluate(const Date &date, const string &event) {
-    switch (_logicalOperation)
-    {
+    switch (_logicalOperation) {
         case LogicalOperation::And:
             return _left->Evaluate(date, event) and _right->Evaluate(date, event);
         case LogicalOperation::Or:
