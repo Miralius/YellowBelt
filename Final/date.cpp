@@ -9,9 +9,18 @@
         : _year(year), _month(month), _day(day) {}
 
 Date ParseDate(istream &is) {
-    // TODO: implement function;
-    (void) is;
-    return {0, 0, 0};
+    uint16_t year;
+    is >> year;
+    is.ignore(1); // ignore '-'
+
+    uint16_t month;
+    is >> month;
+    is.ignore(1); // ignore '-'
+
+    uint16_t day;
+    is >> day;
+
+    return {year, month, day};
 }
 
 ostream &operator<<(ostream &os, const Date &date) {
