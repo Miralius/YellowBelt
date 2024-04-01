@@ -18,4 +18,8 @@ void TestParseDate() {
         istringstream is("0-1-1");
         AssertEqual(ParseDate(is), Date(0, 1, 1), "Parse date 0-1-1");
     }
+    {
+        istringstream is("9999-12-31");
+        AssertEqual(ParseDate(is), Date(9999, 12, 31), "Parse date 9999-12-31");
+    }
 }
