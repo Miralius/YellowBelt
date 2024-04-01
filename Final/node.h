@@ -56,6 +56,7 @@ protected:
         }
     }
 
+private:
     const Comparison _comparison;
 };
 
