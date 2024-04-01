@@ -4,8 +4,6 @@
 
 #include "date.h"
 
-#include <iomanip>
-
 Date::Date()
         : _date(TimePoint()) {}
 
@@ -16,10 +14,6 @@ Date::Date()
     FillTmStruct(time, year, month, day);
     return chrono::time_point_cast<Days>(chrono::system_clock::from_time_t(mktime(&time)));
 }(year, month, day)) {}
-
-TimePoint Date::GetTimePoint() const {
-    return _date;
-}
 
 void FillTmStruct(tm &time, uint16_t year, uint16_t month, uint16_t day) {
     time.tm_year = year - 1900;
@@ -36,11 +30,13 @@ Date ParseDate(istream &is) {
     is.ignore(1);
     uint16_t day;
     is >> day;
-    return {year, month, day};
+    return { year, month, day };
 }
 
 ostream &operator<<(ostream &os, const Date &date) {
-    const time_t time_t = chrono::system_clock::to_time_t(date.GetTimePoint());
-    const tm tm = *localtime(&time_t);
-    os << setfill('0') << setw(4) << tm.tm_year << '-' << setw(2) << tm.tm_mon << '-' << tm.tm_mday;
+    // TODO: implement function;
+    // date out for 0-1-1 should be 0001-01-1
+    (void) os;
+    (void) date;
+    return os;
 }
