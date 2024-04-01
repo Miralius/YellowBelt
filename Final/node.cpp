@@ -42,10 +42,15 @@ LogicalOperationNode::LogicalOperationNode(const LogicalOperation &logicalOperat
 }
 
 bool LogicalOperationNode::Evaluate(const Date &date, const string &event) {
-    // TODO: implement function
-    (void) date;
-    (void) event;
-    return false;
+    switch (_logicalOperation)
+    {
+        case LogicalOperation::And:
+            return _left->Evaluate(date, event) and _right->Evaluate(date, event);
+        case LogicalOperation::Or:
+            return _left->Evaluate(date, event) or _right->Evaluate(date, event);
+        default:
+            return {};
+    }
 }
 
 LogicalOperationNode::~LogicalOperationNode() = default;
