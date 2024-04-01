@@ -8,7 +8,8 @@
 #pragma once
 
 #include "date.h"
-#include <set>
+
+#include <vector>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ public:
     }
 
     template<typename Predicate>
-    [[nodiscard]] set<string> FindIf(Predicate &&predicate) {
+    [[nodiscard]] vector<string> FindIf(Predicate &&predicate) {
         // TODO: implement function
         // Empty condition makes function equal to Print
         (void) predicate;

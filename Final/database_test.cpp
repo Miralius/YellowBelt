@@ -12,28 +12,49 @@
 #include "test_runner.h"
 #endif
 
+#include <sstream>
+
 void TestDatabase() {
     {
+        // Check for add:
+        // Add 2017-11-07 big sport event
+
         Database db;
-        const auto dateExample = Date(2017, 11, 7);
-        db.Add(dateExample, "big sport event");
-        const auto entries = db.FindIf([&dateExample](const Date &date, const string &) {
-            return date == dateExample;
+        db.Add({2017, 11, 7}, "big sport event");
+        const auto entries = db.FindIf([](const Date &date, const string &) {
+            return date == Date{2017, 11, 7};
         });
         Assert(entries.size() == 1, "Database 'found 1 entries' after adding");
-        AssertEqual(*entries.cbegin(), "big sport event", "Database checks 'Add 2017-11-07 big sport event' work");
+        AssertEqual(entries.front(), "big sport event", "Database checks 'Add 2017-11-07 big sport event' work");
     }
     {
+        // Check for del:
+        // Add 2017-06-01 1st of June
+        // Add 2017-07-08 8th of July
+        // Add 2017-07-08 Someone's birthday
+        // Del date == 2017-07-08
+
+        // Result:
+        // stdout "Removed 2 entries"
+
         Database db;
         db.Add({2017, 6, 1}, "1st of June");
-        const auto dateExample = Date(2017, 7, 8);
-        db.Add(dateExample, "8th of July");
-        db.Add(dateExample, "Someone's birthday");
-        AssertEqual(db.RemoveIf([&dateExample](const Date &date, const string &) {
-            return date == dateExample;
+        db.Add({2017, 7, 8}, "8th of July");
+        db.Add({2017, 7, 8}, "Someone's birthday");
+        AssertEqual(db.RemoveIf([](const Date &date, const string &) {
+            return date == Date{2017, 7, 8};
         }), 2, "Database checks 'Del date == 2017-07-08' where there are 2 entries will be deleted");
     }
     {
+        // Check for del (everything is removed):
+        // Add 2017-06-01 1st of June
+        // Add 2017-07-08 8th of July
+        // Add 2017-07-08 Someone's birthday
+        // Del
+
+        // Result:
+        // stdout "Removed 3 entries"
+
         Database db;
         db.Add({2017, 6, 1}, "1st of June");
         const auto dateExample = Date(2017, 7, 8);
@@ -42,5 +63,54 @@ void TestDatabase() {
         AssertEqual(db.RemoveIf([](const Date &, const string &) {
             return true;
         }), 3, "Database checks 'Del' where there are 3 entries, and everything is removed");
+    }
+    {
+        // Check for print:
+        // Add 2017-01-01 Holiday
+        // Add 2017-03-08 Holiday
+        // Add 2017-1-1 New Year
+        // Add 2017-1-1 New Year
+
+        // Result
+        // 2017-01-01 Holiday
+        // 2017-01-01 New Year
+        // 2017-03-08 Holiday
+
+        Database db;
+        db.Add({2017, 1, 1}, "Holiday");
+        db.Add({2017, 3, 8}, "Holiday");
+        db.Add({2017, 1, 1}, "New Year");
+        db.Add({2017, 1, 1}, "New Year");
+        ostringstream os;
+        db.Print(os);
+        AssertEqual(os.str(), "2017-01-01 Holiday\n2017-01-01 New Year\n2017-03-08 Holiday",
+                    "Database 'Print' checking");
+    }
+    {
+        // Check for Find
+        // Add 2017-01-01 Holiday
+        // Add 2017-03-08 Holiday
+        // Add 2017-01-01 New Year
+        // Find event != "working day"
+        // Add 2017-05-09 Holiday
+
+        // Result:
+        // 2017-01-01 Holiday
+        // 2017-01-01 New Year
+        // 2017-03-08 Holiday
+        // Found 3 entries
+
+        Database db;
+        db.Add({2017, 1, 1}, "Holiday");
+        db.Add({2017, 3, 8}, "Holiday");
+        db.Add({2017, 1, 1}, "New Year");
+        const auto nonWorkingDayEvents = db.FindIf([](const Date &, const string &event) {
+            return event != "working day";
+        });
+        db.Add({2017, 5, 9}, "Holiday");
+        AssertEqual(nonWorkingDayEvents.size(), 3u, "Database 'Find' count checking");
+        AssertEqual(nonWorkingDayEvents.at(0), "2017-01-01 Holiday", "Database 'Find' the first record checking");
+        AssertEqual(nonWorkingDayEvents.at(1), "2017-01-01 New Year", "Database 'Find' the second record checking");
+        AssertEqual(nonWorkingDayEvents.at(2), "2017-03-08 Holiday", "Database 'Find' the third record checking");
     }
 }
