@@ -22,15 +22,9 @@ void FillTmStruct(tm &time, uint16_t year, uint16_t month, uint16_t day) {
 }
 
 Date ParseDate(istream &is) {
-    uint16_t year;
-    is >> year;
-    is.ignore(1);
-    uint16_t month;
-    is >> month;
-    is.ignore(1);
-    uint16_t day;
-    is >> day;
-    return { year, month, day };
+    // TODO: implement function;
+    (void) is;
+    return {};
 }
 
 ostream &operator<<(ostream &os, const Date &date) {
