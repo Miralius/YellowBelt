@@ -6,8 +6,7 @@
 
 #include <iomanip>
 
-// TODO: Might be it's needed to remove attribute
-[[maybe_unused]] Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
+Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
         : _year(year), _month(month), _day(day) {}
 
 uint16_t Date::GetYear() const {
