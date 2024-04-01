@@ -26,7 +26,7 @@ class EmptyNode : public Node {
 public:
     virtual ~EmptyNode();
 
-    bool Evaluate(const Date &date, const string &event) override;
+    bool Evaluate(const Date &, const string &) override;
 };
 
 class ComparisonNode : public Node {
@@ -51,6 +51,8 @@ protected:
                 return lhs == rhs;
             case Comparison::NotEqual:
                 return lhs != rhs;
+            default:
+                return {};
         }
     }
 
@@ -63,7 +65,7 @@ public:
 
     ~DateComparisonNode() override;
 
-    bool Evaluate(const Date &date, const string &event) override;
+    bool Evaluate(const Date &date, const string &) override;
 
 private:
     const Date _date;

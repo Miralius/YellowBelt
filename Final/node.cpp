@@ -20,10 +20,8 @@ DateComparisonNode::DateComparisonNode(const Comparison &comparison, const Date 
         : ComparisonNode(comparison), _date(date) {
 }
 
-bool DateComparisonNode::Evaluate(const Date &date, const string &event) {
-    (void) event;
-    // TODO: implement function
-    return _comparison == Comparison::NotEqual && date != _date;
+bool DateComparisonNode::Evaluate(const Date &date, const string &) {
+    return ComparisonNode::compare(date, _date);
 }
 
 DateComparisonNode::~DateComparisonNode() = default;
@@ -34,7 +32,9 @@ EventComparisonNode::EventComparisonNode(const Comparison &comparison, string ev
 
 bool EventComparisonNode::Evaluate(const Date &date, const string &event) {
     // TODO: implement function
-    return ComparisonNode::Evaluate(date, event);
+    (void) date;
+    (void) event;
+    return {};
 }
 
 EventComparisonNode::~EventComparisonNode() = default;

@@ -19,6 +19,16 @@ public:
 
     friend ostream &operator<<(ostream &os, const Date &date);
 
+    friend bool operator<(const Date &lhs, const Date &rhs);
+
+    friend bool operator<=(const Date &lhs, const Date &rhs);
+
+    friend bool operator>(const Date &lhs, const Date &rhs);
+
+    friend bool operator>=(const Date &lhs, const Date &rhs);
+
+    friend bool operator==(const Date &lhs, const Date &rhs);
+
     friend bool operator!=(const Date &lhs, const Date &rhs);
 
 private:
