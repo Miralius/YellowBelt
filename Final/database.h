@@ -10,6 +10,8 @@
 #include "date.h"
 
 #include <vector>
+#include <map>
+#include <list>
 
 using namespace std;
 
@@ -39,7 +41,7 @@ public:
     }
 
 private:
-    // TODO: It seems the best way to keep records is map<Date, list/vector<string>(or pair<set<string>, string>)>
+    map<Date, list<string>> _entries;
 };
 
 void TestDatabase();
