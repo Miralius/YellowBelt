@@ -59,7 +59,6 @@ public:
 
     ~EventComparisonNode() override;
 
-    // TODO: May be it's needed to override Evaluate method
     bool Evaluate(const Date &date, const string &event) override;
 
 private:
