@@ -42,12 +42,9 @@ private:
 
 void TestDatabase();
 
-// TODO: Check for del:
 // Add 2017-06-01 1st of June
 // Add 2017-07-08 8th of July
 // Add 2017-07-08 Someone's birthday
-// Del date == 2017-07-08
-// stdout "Removed 2 entries"
 // TODO: del without condition
 
 // TODO: Check for print:

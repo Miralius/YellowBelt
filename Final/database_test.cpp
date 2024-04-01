@@ -31,6 +31,16 @@ void TestDatabase() {
         db.Add(dateExample, "Someone's birthday");
         AssertEqual(db.RemoveIf([&dateExample](const Date &date, const string &) {
             return date == dateExample;
-        }), 2, "Database checks 'Del date == 2017-07-08' where there are 2 entries");
+        }), 2, "Database checks 'Del date == 2017-07-08' where there are 2 entries will be deleted");
+    }
+    {
+        Database db;
+        db.Add({2017, 6, 1}, "1st of June");
+        const auto dateExample = Date(2017, 7, 8);
+        db.Add(dateExample, "8th of July");
+        db.Add(dateExample, "Someone's birthday");
+        AssertEqual(db.RemoveIf([](const Date &, const string &) {
+            return true;
+        }), 3, "Database checks 'Del' where there are 3 entries, and everything is removed");
     }
 }
