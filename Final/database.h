@@ -40,7 +40,7 @@ private:
     // TODO: It seems the best way to keep records is map<Date, list/vector<string>(or pair<set<string>, string>)>
 };
 
-//TestDatabase()
+void TestDatabase();
 // TODO: Check for add:
 // Add 2017-11-07 big sport event
 // stdout: "" (nothing)
