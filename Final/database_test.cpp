@@ -178,4 +178,60 @@ void TestDatabase() {
         AssertEqual(thirdResult, "2017-03-08 Holiday",
                     "Database 'Last' the first record request (2017-03-08) checking");
     }
+    {
+        // Generalized check #1
+        // Add 2017-11-21 Tuesday
+        // Add 2017-11-20 Monday
+        // Add 2017-11-21 Weekly meeting
+        // Print
+        // Find event != "Weekly meeting"
+        // Last 2017-11-30
+        // Del date > 2017-11-20
+        // Last 2017-11-30
+        // Last 2017-11-01
+
+        // Result:
+        // 2017-11-20 Monday
+        // 2017-11-21 Tuesday
+        // 2017-11-21 Weekly meeting
+        // 2017-11-20 Monday
+        // 2017-11-21 Tuesday
+        // Found 2 entries
+        // 2017-11-21 Weekly meeting
+        // Removed 2 entries
+        // 2017-11-20 Monday
+        // No entries
+
+        Database db;
+        db.Add({2017, 11, 21}, "Tuesday");
+        db.Add({2017, 11, 20}, "Monday");
+        db.Add({2017, 11, 21}, "Weekly meeting");
+        ostringstream os;
+        db.Print(os);
+        AssertEqual(os.str(), "2017-11-20 Monday\n2017-11-21 Tuesday\n2017-11-21 Weekly meeting",
+                    "Database generalized check #1 Print command");
+        const auto nonWeeklyMeetingEvents = db.FindIf(
+                [](const Date &, const string &event) { return event != "Weekly meeting"; });
+        AssertEqual(nonWeeklyMeetingEvents.size(), 2u, "Database generalized check #1 Find entry count command");
+        AssertEqual(nonWeeklyMeetingEvents.at(0), "2017-11-20 Monday",
+                    "Database generalized check #1 Find command the first entry");
+        AssertEqual(nonWeeklyMeetingEvents.at(1), "2017-11-21 Tuesday",
+                    "Database generalized check #1 Find command the second entry");
+        const auto lastEntryFirstRequest = db.Last({2017, 11, 30});
+        AssertEqual(lastEntryFirstRequest, "2017-11-21 Weekly meeting",
+                    "Database generalized check #1 Last command the first request");
+        AssertEqual(db.RemoveIf([](const Date &date, const string &) { return date > Date{2017, 11, 20}; }), 2,
+                    "Database generalized check #1 Del command");
+        const auto lastEntrySecondRequest = db.Last({2017, 11, 30});
+        AssertEqual(lastEntrySecondRequest, "2017-11-20 Monday",
+                    "Database generalized check #1 Last command the second request");
+        bool noEntriesForThirdRequest = false;
+        try {
+            const auto firstResult = db.Last({2016, 11, 1});
+        }
+        catch (const invalid_argument &) {
+            noEntriesForThirdRequest = true;
+        }
+        Assert(noEntriesForThirdRequest, "Database generalized check #1 Last command the third request (no entries)");
+    }
 }
