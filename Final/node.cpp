@@ -30,11 +30,8 @@ EventComparisonNode::EventComparisonNode(const Comparison &comparison, string ev
         : ComparisonNode(comparison), _event(std::move(event)) {
 }
 
-bool EventComparisonNode::Evaluate(const Date &date, const string &event) {
-    // TODO: implement function
-    (void) date;
-    (void) event;
-    return {};
+bool EventComparisonNode::Evaluate(const Date &, const string &event) {
+    return ComparisonNode::compare(event, _event);
 }
 
 EventComparisonNode::~EventComparisonNode() = default;

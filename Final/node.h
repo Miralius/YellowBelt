@@ -77,7 +77,7 @@ public:
 
     ~EventComparisonNode() override;
 
-    bool Evaluate(const Date &date, const string &event) override;
+    bool Evaluate(const Date &, const string &event) override;
 
 private:
     const string _event;
