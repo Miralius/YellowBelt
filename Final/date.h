@@ -11,8 +11,7 @@
 #include <iostream>
 
 using namespace std;
-using Days = chrono::duration<int64_t, ratio<86400>>;
-using TimePoint = chrono::time_point<chrono::system_clock, Days>;
+using TimePoint = chrono::time_point<chrono::system_clock>; // TODO: may be it's needed to use Days duration
 
 class Date {
 public:
