@@ -15,13 +15,13 @@ using TimePoint = chrono::time_point<chrono::system_clock>; // TODO: may be it's
 
 class Date {
 public:
-    Date();
-
     // TODO: Might be it's needed to remove attribute
-    [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t date);
+    [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t day);
 
 private:
-    const TimePoint _date;
+    const uint16_t _year;
+    const uint16_t _month;
+    const uint16_t _day;
 };
 
 Date ParseDate(istream &is);
@@ -31,6 +31,6 @@ Date ParseDate(istream &is);
 // TODO: Check 9999-12-31
 // TODO: Check 2017-11-07, 0-2-31
 
-ostream& operator<<(ostream &os, const Date& date);
+ostream &operator<<(ostream &os, const Date &date);
 
 #endif //YELLOW_BELT_DATE_H
