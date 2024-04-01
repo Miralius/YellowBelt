@@ -19,8 +19,7 @@ using namespace std;
 string ParseEvent(istream &is) {
     string event;
     // ignore all spaces at the beginning of the event
-    while (is.peek() == ' ')
-    {
+    while (is.peek() == ' ') {
         is.ignore();
     }
     getline(is, event);

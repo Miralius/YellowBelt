@@ -234,4 +234,63 @@ void TestDatabase() {
         }
         Assert(noEntriesForThirdRequest, "Database generalized check #1 Last command the third request (no entries)");
     }
+    {
+        // Generalized check #2
+        // Add 2017-11-05 holiday
+        // Add 2017-11-07 after Party ^_^ "← here's space!!!"
+        // Find date < 2017-11-06
+        // Del event != "holiday"
+        // Find date >= 2017-01-01 AND date < 2017-07-01 AND event == "sport event"
+        // Add 2017-05-01 sport event
+        // Add 2017-01-01 sport event
+        // Add 2017-07-01 sport event
+        // Find date >= 2017-01-01 AND date < 2017-07-01 AND event == "sport event"
+        // Del date < 2017-01-01 AND (event == "holiday" OR event == "sport event")
+        // Add 0-1-1 sport event
+        // Del date < 2017-01-01 AND (event == "holiday" OR event == "sport event")
+
+        // Result
+        // 2017-11-05 holiday
+        // Found 1 entries
+        // Removed 1 entries
+        // Found 0 entries
+        // 2017-01-01 sport event
+        // 2017-05-01 sport event
+        // Found 2 entries
+        // Removed 0 entries
+        // Removed 1 entries
+
+        Database db;
+        db.Add({2017, 11, 5}, "holiday");
+        db.Add({2017, 11, 7}, "after Party ^_^ ");
+        const auto firstFindResult = db.FindIf(
+                [](const Date &date, const string &) { return date < Date{2017, 11, 6}; });
+        AssertEqual(firstFindResult.size(), 1u, "Database generalized check #2 Find command the first request (size)");
+        AssertEqual(firstFindResult.at(0), "2017-11-05 holiday",
+                    "Database generalized check #2 Find command the first request");
+        AssertEqual(db.RemoveIf([](const Date &, const string &event) { return event != "holiday"; }), 1,
+                    "Database generalized check #2 Del command the first request");
+        const auto secondFindResult = db.FindIf([](const Date &date, const string &event) {
+            return date >= Date{2017, 1, 1} and date < Date{2017, 7, 1} and event == "sport event";
+        });
+        Assert(secondFindResult.empty(), "Database generalized check #2 Find command the second request");
+        db.Add({2017, 5, 1}, "sport event");
+        db.Add({2017, 1, 1}, "sport event");
+        db.Add({2017, 7, 1}, "sport event");
+        const auto thirdFindResult = db.FindIf([](const Date &date, const string &event) {
+            return date >= Date{2017, 1, 1} and date < Date{2017, 7, 1} and event == "sport event";
+        });
+        AssertEqual(thirdFindResult.size(), 2u, "Database generalized check #2 Find command the third request (size)");
+        AssertEqual(thirdFindResult.at(0), "2017-01-01 sport event",
+                    "Database generalized check #2 Find command the third request (the first entry)");
+        AssertEqual(thirdFindResult.at(1), "2017-05-01 sport event",
+                    "Database generalized check #2 Find command the third request (the second entry)");
+        AssertEqual(db.RemoveIf([](const Date &date, const string &event) {
+            return date < Date{2017, 1, 1} and (event == "holiday" or event == "sport event");
+        }), 0, "Database generalized check #2 Del command the second request");
+        db.Add({0, 1, 1}, "sport event");
+        AssertEqual(db.RemoveIf([](const Date &date, const string &event) {
+            return date < Date{2017, 1, 1} and (event == "holiday" or event == "sport event");
+        }), 1, "Database generalized check #2 Del command the third request");
+    }
 }
