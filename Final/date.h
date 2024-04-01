@@ -19,12 +19,11 @@ public:
     Date();
 
     // TODO: Might be it's needed to remove attribute
-    [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t day);
+    [[maybe_unused]] Date(uint16_t year, uint16_t month, uint16_t date);
+
 private:
     const TimePoint _date;
 };
-
-void FillTmStruct(tm& time, uint16_t year, uint16_t month, uint16_t day);
 
 Date ParseDate(istream &is);
 
