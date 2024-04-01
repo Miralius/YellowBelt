@@ -143,4 +143,39 @@ void TestDatabase() {
         AssertEqual(nonWorkingDayEvents.at(2), "2017-03-08 Holiday",
                     "Database 'Find (empty condition)' the third record checking");
     }
+    {
+        // Check for Last
+        // Add 2017-01-01 New Year
+        // Add 2017-03-08 Holiday
+        // Add 2017-01-01 Holiday
+        // Last 2016-12-31
+        // Last 2017-01-01
+        // Last 2017-06-01
+        // Add 2017-05-09 Holiday
+
+        // Result:
+        // No entries
+        // 2017-01-01 Holiday
+        // 2017-03-08 Holiday
+
+        Database db;
+        db.Add({2017, 1, 1}, "New Year");
+        db.Add({2017, 3, 8}, "Holiday");
+        db.Add({2017, 1, 1}, "Holiday");
+        bool noEntriesForFirstRequest = false;
+        try {
+            const auto firstResult = db.Last({2016, 12, 31});
+        }
+        catch (const invalid_argument &) {
+            noEntriesForFirstRequest = true;
+        }
+        const auto secondResult = db.Last({2017, 1, 1});
+        const auto thirdResult = db.Last({2017, 6, 1});
+        db.Add({2017, 5, 9}, "Holiday");
+        Assert(noEntriesForFirstRequest, "Database 'Last' the first request (2016-12-31) no result checking");
+        AssertEqual(secondResult, "2017-01-01 Holiday",
+                    "Database 'Last' the second record request (2017-01-01) checking");
+        AssertEqual(thirdResult, "2017-03-08 Holiday",
+                    "Database 'Last' the first record request (2017-03-08) checking");
+    }
 }

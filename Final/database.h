@@ -43,19 +43,6 @@ private:
 
 void TestDatabase();
 
-// TODO: check for Last
-// Add 2017-01-01 New Year
-// Add 2017-03-08 Holiday
-// Add 2017-01-01 Holiday
-// Last 2016-12-31
-// Last 2017-01-01
-// Last 2017-06-01
-// Add 2017-05-09 Holiday
-// stdout:
-// No entries
-// 2017-01-01 Holiday
-// 2017-03-08 Holiday
-
 // TODO: Generalized check #1
 // Add 2017-11-21 Tuesday
 // Add 2017-11-20 Monday
