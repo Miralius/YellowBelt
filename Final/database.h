@@ -42,22 +42,6 @@ private:
 
 void TestDatabase();
 
-// Add 2017-06-01 1st of June
-// Add 2017-07-08 8th of July
-// Add 2017-07-08 Someone's birthday
-// TODO: del without condition
-
-// TODO: Check for print:
-// Add 2017-01-01 Holiday
-// Add 2017-03-08 Holiday
-// Add 2017-1-1 New Year
-// Add 2017-1-1 New Year
-// Print
-// stdout:
-// 2017-01-01 Holiday
-// 2017-01-01 New Year
-// 2017-03-08 Holiday
-
 // TODO: check for Find
 // Add 2017-01-01 Holiday
 // Add 2017-03-08 Holiday
