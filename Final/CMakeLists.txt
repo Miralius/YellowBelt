@@ -6,6 +6,7 @@ add_executable(Final main.cpp
         database.h
         date.cpp
         date.h
+        date_test.cpp
         node.cpp
         node.h
         token.cpp

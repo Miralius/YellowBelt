@@ -9,18 +9,6 @@
 Date::Date(const uint16_t year, const uint16_t month, const uint16_t day)
         : _year(year), _month(month), _day(day) {}
 
-uint16_t Date::GetYear() const {
-    return _year;
-}
-
-uint16_t Date::GetMonth() const {
-    return _month;
-}
-
-uint16_t Date::GetDay() const {
-    return _day;
-}
-
 Date ParseDate(istream &is) {
     uint16_t year;
     is >> year;
@@ -37,6 +25,9 @@ Date ParseDate(istream &is) {
 }
 
 ostream &operator<<(ostream &os, const Date &date) {
-    return os << setfill('0') << setw(4) << date.GetYear() << '-' << setw(2) << date.GetMonth() << '-' << setw(2)
-              << date.GetDay();
+    return os << setfill('0') << setw(4) << date._year << '-' << setw(2) << date._month << '-' << setw(2) << date._day;
+}
+
+bool operator!=(const Date &lhs, const Date &rhs) {
+    return tie(lhs._year, lhs._month, lhs._day) != tie(rhs._year, rhs._month, rhs._day);
 }
