@@ -17,7 +17,7 @@ using namespace std;
 
 class Node {
 public:
-    bool Evaluate(const Date &date, const string &event);
+    virtual bool Evaluate(const Date &date, const string &event);
 };
 
 using NodePtr = shared_ptr<Node>;
@@ -30,14 +30,15 @@ class ComparisonNode : public Node {
 public:
     explicit ComparisonNode(const Comparison &comparison);
     // TODO: May be it's needed to override Evaluate method
-private:
+protected:
     [[maybe_unused]] const Comparison _comparison; // TODO: May be [[maybe_unused] attribute isn't needed here
 };
 
 class DateComparisonNode : public ComparisonNode {
 public:
-    DateComparisonNode(const Comparison &comparison, Date date);
-    // TODO: May be it's needed to override Evaluate method
+    DateComparisonNode(const Comparison &comparison, const Date& date);
+
+    bool Evaluate(const Date &date, const string &event) override;
 private:
     const Date _date;
 };

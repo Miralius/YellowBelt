@@ -16,8 +16,32 @@ ComparisonNode::ComparisonNode(const Comparison &comparison)
         : _comparison(comparison) {
 }
 
-DateComparisonNode::DateComparisonNode(const Comparison &comparison, Date date)
-        : ComparisonNode(comparison), _date(std::move(date)) {
+DateComparisonNode::DateComparisonNode(const Comparison &comparison, const Date &date)
+        : ComparisonNode(comparison), _date(date) {
+}
+
+bool DateComparisonNode::Evaluate(const Date &date, const string &event) {
+    (void) event;
+    switch (_comparison) {
+        case Comparison::Less:
+            //TODO: implement < comparator
+            break;
+        case Comparison::LessOrEqual:
+            //TODO: implement <= comparator
+            break;
+        case Comparison::Greater:
+            //TODO: implement > comparator
+            break;
+        case Comparison::GreaterOrEqual:
+            //TODO: implement >= comparator
+            break;
+        case Comparison::Equal:
+            //TODO: implement == comparator
+            break;
+        case Comparison::NotEqual:
+            return date != _date;
+    }
+    return {};
 }
 
 EventComparisonNode::EventComparisonNode(const Comparison &comparison, string event)
