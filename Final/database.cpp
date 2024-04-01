@@ -4,13 +4,22 @@
 
 #include "database.h"
 
-// TODO: Check static functions suppressing
-void Database::Add(const Date &date, const string &event) { // NOLINT(*-convert-member-functions-to-static)
-    // TODO: implement function
-    // use `insert` method
-    // event may contain spaces, so use `get line` method
-    (void) date;
-    (void) event;
+#include <algorithm>
+
+void Database::Add(const Date &date, const string &event) {
+    auto dateIt = _entries.find(date);
+    if (dateIt != _entries.end())
+    {
+        auto& entryList = dateIt->second;
+        if (find(entryList.cbegin(), entryList.cend(), event) == entryList.cend())
+        {
+            entryList.push_back(event);
+        }
+    }
+    else
+    {
+        _entries[date].push_back(event);
+    }
 }
 
 // TODO: Check static functions suppressing
