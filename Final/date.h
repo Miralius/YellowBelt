@@ -7,11 +7,10 @@
 
 #pragma once
 
-#include <chrono>
 #include <iostream>
+#include <cstdint>
 
 using namespace std;
-using TimePoint = chrono::time_point<chrono::system_clock>; // TODO: may be it's needed to use Days duration
 
 class Date {
 public:
