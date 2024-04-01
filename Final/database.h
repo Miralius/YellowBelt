@@ -43,19 +43,6 @@ private:
 
 void TestDatabase();
 
-// TODO: check for Find
-// Add 2017-01-01 Holiday
-// Add 2017-03-08 Holiday
-// Add 2017-01-01 New Year
-// Find event != "working day"
-// Add 2017-05-09 Holiday
-// stdout:
-// 2017-01-01 Holiday
-// 2017-01-01 New Year
-// 2017-03-08 Holiday
-// Found 3 entries
-// TODO: Find with empty condition
-
 // TODO: check for Last
 // Add 2017-01-01 New Year
 // Add 2017-03-08 Holiday

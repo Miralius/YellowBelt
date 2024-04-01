@@ -113,4 +113,34 @@ void TestDatabase() {
         AssertEqual(nonWorkingDayEvents.at(1), "2017-01-01 New Year", "Database 'Find' the second record checking");
         AssertEqual(nonWorkingDayEvents.at(2), "2017-03-08 Holiday", "Database 'Find' the third record checking");
     }
+    {
+        // Check for Find (empty condition)
+        // Add 2017-01-01 Holiday
+        // Add 2017-03-08 Holiday
+        // Add 2017-01-01 New Year
+        // Find
+        // Add 2017-05-09 Holiday
+
+        // Result:
+        // 2017-01-01 Holiday
+        // 2017-01-01 New Year
+        // 2017-03-08 Holiday
+        // Found 3 entries
+
+        Database db;
+        db.Add({2017, 1, 1}, "Holiday");
+        db.Add({2017, 3, 8}, "Holiday");
+        db.Add({2017, 1, 1}, "New Year");
+        const auto nonWorkingDayEvents = db.FindIf([](const Date &, const string &) {
+            return true;
+        });
+        db.Add({2017, 5, 9}, "Holiday");
+        AssertEqual(nonWorkingDayEvents.size(), 3u, "Database 'Find' empty condition checking");
+        AssertEqual(nonWorkingDayEvents.at(0), "2017-01-01 Holiday",
+                    "Database 'Find (empty condition)' the first record checking");
+        AssertEqual(nonWorkingDayEvents.at(1), "2017-01-01 New Year",
+                    "Database 'Find (empty condition)' the second record checking");
+        AssertEqual(nonWorkingDayEvents.at(2), "2017-03-08 Holiday",
+                    "Database 'Find (empty condition)' the third record checking");
+    }
 }
