@@ -6,11 +6,8 @@
 
 EmptyNode::~EmptyNode() = default;
 
-bool EmptyNode::Evaluate(const Date &date, const string &event) {
-    // TODO: implement function;
-    (void) date;
-    (void) event;
-    return {};
+bool EmptyNode::Evaluate(const Date &, const string &) {
+    return true;
 }
 
 ComparisonNode::ComparisonNode(const Comparison &comparison)
