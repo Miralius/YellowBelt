@@ -94,8 +94,8 @@ void TestParseEvent() {
 
 void TestAll() {
     TestRunner tr;
+    tr.RunTest(TestParseDate, "TestParseDate");
     tr.RunTest(TestParseEvent, "TestParseEvent");
     tr.RunTest(TestParseCondition, "TestParseCondition");
-    tr.RunTest(TestParseDate, "TestParseDate");
     // TODO: implement TestDatabase() in database.h
 }
