@@ -30,6 +30,5 @@ private:
 Date ParseDate(istream &is);
 
 void TestParseDate();
-// TODO: Check 2017-11-07, 0-2-31
 
 #endif //YELLOW_BELT_DATE_H
