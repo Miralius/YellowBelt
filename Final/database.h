@@ -11,7 +11,6 @@
 
 #include <vector>
 #include <map>
-#include <list>
 
 using namespace std;
 
@@ -41,7 +40,7 @@ public:
     }
 
 private:
-    map<Date, list<string>> _entries;
+    map<Date, vector<string>> _entries;
 };
 
 void TestDatabase();
