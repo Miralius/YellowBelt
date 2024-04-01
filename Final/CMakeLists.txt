@@ -1,4 +1,6 @@
-add_executable(Final main.cpp
+add_executable(Final
+        main.h
+        main.cpp
         condition_parser.cpp
         condition_parser.h
         condition_parser_test.cpp

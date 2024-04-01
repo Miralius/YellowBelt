@@ -41,9 +41,6 @@ private:
 };
 
 void TestDatabase();
-// TODO: Check for add:
-// Add 2017-11-07 big sport event
-// stdout: "" (nothing)
 
 // TODO: Check for del:
 // Add 2017-06-01 1st of June
