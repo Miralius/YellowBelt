@@ -30,12 +30,12 @@ void Database::Print(ostream &ostream) const {
     }
 }
 
-// TODO: Check static functions suppressing
-std::string Database::Last(const Date &date) const { // NOLINT(*-convert-member-functions-to-static)
-    //  TODO: implement function
-    // use lower_bound(date)
-    // use THE LAST added event for the date
-    // if date < database's dates -> no entries
-    (void) date;
-    return {};
+string Database::Last(const Date &date) const {
+    const auto afterLastIt = _entries.upper_bound(date);
+    if (afterLastIt == _entries.cbegin())
+    {
+        throw invalid_argument("No entries found");
+    }
+    const auto lastIt = prev(afterLastIt);
+    return to_string(lastIt->first) + ' ' + lastIt->second.back();
 }
