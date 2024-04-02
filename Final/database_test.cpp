@@ -84,7 +84,7 @@ void TestDatabase() {
         db.Add({2017, 1, 1}, "New Year");
         ostringstream os;
         db.Print(os);
-        AssertEqual(os.str(), "2017-01-01 Holiday\n2017-01-01 New Year\n2017-03-08 Holiday",
+        AssertEqual(os.str(), "2017-01-01 Holiday\n2017-01-01 New Year\n2017-03-08 Holiday\n",
                     "Database 'Print' checking");
     }
     {
