@@ -12,6 +12,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <set>
 
 using namespace std;
 
@@ -27,27 +28,35 @@ public:
     template<typename Predicate>
     [[nodiscard]] int RemoveIf(Predicate &&predicate) {
         int result{};
-        for (auto mapIt = _entries.begin(); mapIt != _entries.end();) {
-            const auto onlyEventPredicate = [&dateEvent = mapIt->first, &predicate](const auto &event) {
+        auto sequentialEntriesIt = _sequentialEntries.begin();
+        auto uniqueEntriesIt = _uniqueEntries.begin();
+        for (; sequentialEntriesIt != _sequentialEntries.end() and uniqueEntriesIt != _uniqueEntries.end();) {
+            const auto onlyEventPredicate = [&dateEvent = uniqueEntriesIt->first, &predicate](const auto &event) {
                 return predicate(dateEvent, event);
             };
-            auto &entries = mapIt->second;
-            const auto last = remove_if(entries.begin(), entries.end(), onlyEventPredicate);
-            result += distance(last, entries.end());
-            if (last == entries.begin()) {
-                mapIt = _entries.erase(mapIt);
+            auto &sequentialEntries = sequentialEntriesIt->second;
+            auto &uniqueEntries = uniqueEntriesIt->second;
+            const int deletedCount = erase_if(uniqueEntries, onlyEventPredicate);
+            result += deletedCount;
+            if (uniqueEntries.empty()) {
+                uniqueEntriesIt = _uniqueEntries.erase(uniqueEntriesIt);
+                sequentialEntriesIt = _sequentialEntries.erase(sequentialEntriesIt);
             } else {
-                entries.erase(last, entries.end());
-                ++mapIt;
+                if (deletedCount) {
+                    sequentialEntries.erase(remove_if(sequentialEntries.begin(), sequentialEntries.end(),
+                                                      onlyEventPredicate), sequentialEntries.end());
+                }
+                ++uniqueEntriesIt;
+                ++sequentialEntriesIt;
             }
         }
         return result;
     }
 
     template<typename Predicate>
-    [[nodiscard]] vector<string> FindIf(Predicate &&predicate) {
+    [[nodiscard]] vector<string> FindIf(Predicate &&predicate) const {
         vector<string> result;
-        for (const auto &[date, entries]: _entries) {
+        for (const auto &[date, entries]: _sequentialEntries) {
             const auto onlyEventPredicate = [&dateEvent = date, &predicate](const auto &event) {
                 return predicate(dateEvent, event);
             };
@@ -58,9 +67,7 @@ public:
                 if (resultIt != end) {
                     result.emplace_back(to_string(date) + ' ' + *resultIt);
                     begin = next(resultIt);
-                }
-                else
-                {
+                } else {
                     begin = resultIt;
                 }
             }
@@ -69,7 +76,20 @@ public:
     }
 
 private:
-    map<Date, vector<string>> _entries;
+    template<class Set, typename Predicate>
+    int erase_if(Set &set, Predicate &&predicate) {
+        int old_size = set.size();
+        for (auto first = set.begin(), last = set.end(); first != last;) {
+            if (predicate(*first))
+                first = set.erase(first);
+            else
+                ++first;
+        }
+        return old_size - set.size();
+    }
+
+    map<Date, vector<string>> _sequentialEntries;
+    map<Date, set<string>> _uniqueEntries;
 };
 
 void TestDatabase();

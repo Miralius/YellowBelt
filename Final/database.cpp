@@ -5,23 +5,26 @@
 #include "database.h"
 
 void Database::Add(const Date &date, const string &event) {
-    auto dateIt = _entries.find(date);
-    if (dateIt != _entries.end())
+    auto sequentialEntriesIt = _sequentialEntries.find(date);
+    auto uniqueEntriesIt = _uniqueEntries.find(date);
+    if (sequentialEntriesIt != _sequentialEntries.end() and uniqueEntriesIt != _uniqueEntries.end())
     {
-        auto& entries = dateIt->second;
-        if (find(entries.cbegin(), entries.cend(), event) == entries.cend())
+        auto& uniqueEntries = uniqueEntriesIt->second;
+        if (uniqueEntries.count(event) == 0)
         {
-            entries.push_back(event);
+            sequentialEntriesIt->second.push_back(event);
+            uniqueEntries.insert(event);
         }
     }
     else
     {
-        _entries[date].push_back(event);
+        _sequentialEntries[date].push_back(event);
+        _uniqueEntries[date].insert(event);
     }
 }
 
 void Database::Print(ostream &ostream) const {
-    for (const auto& [date, entries] : _entries)
+    for (const auto& [date, entries] : _sequentialEntries)
     {
         for (const auto& entry : entries)
         {
@@ -31,8 +34,8 @@ void Database::Print(ostream &ostream) const {
 }
 
 string Database::Last(const Date &date) const {
-    const auto afterLastIt = _entries.upper_bound(date);
-    if (afterLastIt == _entries.cbegin())
+    const auto afterLastIt = _sequentialEntries.upper_bound(date);
+    if (afterLastIt == _sequentialEntries.cbegin())
     {
         throw invalid_argument("No entries found");
     }
