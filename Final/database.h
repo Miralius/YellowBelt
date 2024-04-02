@@ -26,28 +26,36 @@ public:
 
     template<typename Predicate>
     [[nodiscard]] int RemoveIf(Predicate &&predicate) {
-        // TODO: implement function
-        // Empty condition erase whole database
-        (void) predicate;
-        return {};
+        int result{};
+        for (auto mapIt = _entries.begin(); mapIt != _entries.end();) {
+            const auto onlyEventPredicate = [&dateEvent = mapIt->first, &predicate](const auto &event) {
+                return predicate(dateEvent, event);
+            };
+            auto &entries = mapIt->second;
+            const auto last = remove_if(entries.begin(), entries.end(), onlyEventPredicate);
+            result += distance(last, entries.end());
+            if (last == entries.begin()) {
+                mapIt = _entries.erase(mapIt);
+            } else {
+                entries.erase(last, entries.end());
+                ++mapIt;
+            }
+        }
+        return result;
     }
 
     template<typename Predicate>
     [[nodiscard]] vector<string> FindIf(Predicate &&predicate) {
         vector<string> result;
-        for (const auto& [date, entries]: _entries)
-        {
-            const auto onlyEventPredicate = [&dateEvent = date, &predicate] (const auto& event)
-            {
+        for (const auto &[date, entries]: _entries) {
+            const auto onlyEventPredicate = [&dateEvent = date, &predicate](const auto &event) {
                 return predicate(dateEvent, event);
             };
             auto begin = entries.cbegin();
             const auto end = entries.cend();
-            while (begin != end)
-            {
+            while (begin != end) {
                 const auto resultIt = find_if(begin, end, onlyEventPredicate);
-                if (resultIt != end)
-                {
+                if (resultIt != end) {
                     result.emplace_back(to_string(date) + ' ' + *resultIt);
                     begin = next(resultIt);
                 }
