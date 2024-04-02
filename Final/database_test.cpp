@@ -25,7 +25,8 @@ void TestDatabase() {
             return date == Date{2017, 11, 7};
         });
         Assert(entries.size() == 1, "Database 'found 1 entries' after adding");
-        AssertEqual(entries.front(), "big sport event", "Database checks 'Add 2017-11-07 big sport event' work");
+        AssertEqual(entries.front(), "2017-11-07 big sport event",
+                    "Database checks 'Add 2017-11-07 big sport event' work");
     }
     {
         // Check for del:

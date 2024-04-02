@@ -51,3 +51,10 @@ bool operator==(const Date &lhs, const Date &rhs) {
 bool operator!=(const Date &lhs, const Date &rhs) {
     return tie(lhs._year, lhs._month, lhs._day) != tie(rhs._year, rhs._month, rhs._day);
 }
+
+string to_string(const Date &date)
+{
+    ostringstream os;
+    os << date;
+    return os.str();
+}

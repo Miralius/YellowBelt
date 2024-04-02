@@ -41,4 +41,6 @@ Date ParseDate(istream &is);
 
 void TestParseDate();
 
+string to_string(const Date &date);
+
 #endif //YELLOW_BELT_DATE_H

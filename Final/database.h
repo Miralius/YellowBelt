@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,10 +34,26 @@ public:
 
     template<typename Predicate>
     [[nodiscard]] vector<string> FindIf(Predicate &&predicate) {
-        // TODO: implement function
-        // Empty condition makes function equal to Print
-        (void) predicate;
-        return {};
+        vector<string> result;
+        for (const auto& [date, entries]: _entries)
+        {
+            const auto onlyEventPredicate = [&dateEvent = date, &predicate] (const auto& event)
+            {
+                return predicate(dateEvent, event);
+            };
+            auto begin = entries.cbegin();
+            const auto end = entries.cend();
+            while (begin != end)
+            {
+                const auto resultIt = find_if(begin, end, onlyEventPredicate);
+                if (resultIt != end)
+                {
+                    result.emplace_back(to_string(date) + ' ' + *resultIt);
+                    begin = next(resultIt);
+                }
+            }
+        }
+        return result;
     }
 
 private:

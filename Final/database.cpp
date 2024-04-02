@@ -4,8 +4,6 @@
 
 #include "database.h"
 
-#include <algorithm>
-
 void Database::Add(const Date &date, const string &event) {
     auto dateIt = _entries.find(date);
     if (dateIt != _entries.end())
