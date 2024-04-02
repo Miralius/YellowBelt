@@ -10,10 +10,10 @@ void Database::Add(const Date &date, const string &event) {
     auto dateIt = _entries.find(date);
     if (dateIt != _entries.end())
     {
-        auto& entryVec = dateIt->second;
-        if (find(entryVec.cbegin(), entryVec.cend(), event) == entryVec.cend())
+        auto& entries = dateIt->second;
+        if (find(entries.cbegin(), entries.cend(), event) == entries.cend())
         {
-            entryVec.push_back(event);
+            entries.push_back(event);
         }
     }
     else
