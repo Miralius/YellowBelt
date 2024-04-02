@@ -209,7 +209,7 @@ void TestDatabase() {
         db.Add({2017, 11, 21}, "Weekly meeting");
         ostringstream os;
         db.Print(os);
-        AssertEqual(os.str(), "2017-11-20 Monday\n2017-11-21 Tuesday\n2017-11-21 Weekly meeting",
+        AssertEqual(os.str(), "2017-11-20 Monday\n2017-11-21 Tuesday\n2017-11-21 Weekly meeting\n",
                     "Database generalized check #1 Print command");
         const auto nonWeeklyMeetingEvents = db.FindIf(
                 [](const Date &, const string &event) { return event != "Weekly meeting"; });

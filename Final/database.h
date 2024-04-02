@@ -59,6 +59,10 @@ public:
                     result.emplace_back(to_string(date) + ' ' + *resultIt);
                     begin = next(resultIt);
                 }
+                else
+                {
+                    begin = resultIt;
+                }
             }
         }
         return result;
